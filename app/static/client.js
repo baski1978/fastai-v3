@@ -27,10 +27,10 @@ function analyze() {
   xhr.onerror = function() {
     alert(xhr.responseText);
   };
-  xhr.onload = function(e) {
+  xhr.onload = function() {
     if (this.readyState === 4) {
-      var response = JSON.parse(e.target.responseText);
-      alert(e);
+      var response = JSON.parse(xhr.response);
+      alert(xhr.response);
       el("result-label").innerHTML = `Result = ${response["result"]}`;
     }
     el("analyze-button").innerHTML = "Analyze";
