@@ -12,7 +12,7 @@ function showPicked(input) {
     el("image-picked").src = reader.target.result;
     el("image-picked").className = "no-display";
   };
-  reader.readAsDataURL(input.files[0].name);
+  reader.readAsDataURL(input.files[0]);
 }
 
 function analyze() {
