@@ -8,8 +8,8 @@ function showPicked(input) {
   el("upload-label").innerHTML = input.files[0].name;
   alert(input.files[0]);
   var reader = new FileReader();
-  reader.onload = function(e) {
-    el("image-picked").src = e.target.result;
+  reader.onload = function() {
+    el("image-picked").src = reader.target.result;
     el("image-picked").className = "";
   };
   reader.readAsDataURL(input.files[0].name);
