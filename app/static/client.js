@@ -22,7 +22,7 @@ function analyze() {
   var xhr = new XMLHttpRequest();
   var loc = window.location;
     xhr.timeout=2000;
- xhr.open("POST", `${loc.protocol}//${loc.hostname}:${loc.port}/analyze`,true)
+ xhr.open("GET", `${loc.protocol}//${loc.hostname}:${loc.port}/analyze`,true)
   // xhr.open("POST", `${loc.protocol}//${loc.hostname}:${loc.port}/predict/`,true);
   //  xhr.open("POST", `${loc.protocol}//${loc.hostname}:${loc.port}/analyze`,true);predict
 
