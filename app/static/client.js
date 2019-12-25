@@ -21,7 +21,7 @@ function analyze() {
   el("analyze-button").innerHTML = "Analyzing...";
   var xhr = new XMLHttpRequest();
   var loc = window.location;
-  xhr.open("POST", `${loc.protocol}//${loc.hostname}:${loc.port}/predict`,true);
+  xhr.open("POST", `${loc.protocol}//${loc.hostname}:${loc.port}/predict/`,true);
   //  xhr.open("POST", `${loc.protocol}//${loc.hostname}:${loc.port}/analyze`,true);predict
   xhr.timeout=2000;
   xhr.onerror = function() {
