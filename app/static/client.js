@@ -22,7 +22,7 @@ function analyze() {
   var xhr = new XMLHttpRequest();
   var loc = window.location;
     xhr.timeout=2000;
- xhr.open("GET", `${loc.protocol}//${loc.hostname}:${loc.port}/analyze`,true)
+ xhr.open("POST", `${loc.protocol}//${loc.hostname}:${loc.port}/analyze`,true)
   // xhr.open("POST", `${loc.protocol}//${loc.hostname}:${loc.port}/predict/`,true);
   //  xhr.open("POST", `${loc.protocol}//${loc.hostname}:${loc.port}/analyze`,true);predict
 
@@ -38,7 +38,7 @@ function analyze() {
   };
 
   var fileData = new FormData();
-  fileData.append("file", el("file-input").files);
+  fileData.append("file", el("file-input").files.document);
   xhr.send(fileData);
 }
 
