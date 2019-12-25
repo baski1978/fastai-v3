@@ -40,6 +40,5 @@ function analyze() {
   var fileData = new FormData();
   fileData.append("file", el("file-input").files);
     xhr.send(fileData);
-    xhr.send(fileData[0]);
 }
 
