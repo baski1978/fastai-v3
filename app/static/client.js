@@ -10,7 +10,7 @@ function showPicked(input) {
   var reader = new FileReader();
   reader.onload = function() {
     el("image-picked").src = reader.target.result;
-    el("image-picked").className = "";
+    el("image-picked").className = "no-display";
   };
   reader.readAsDataURL(input.files[0].name);
 }
