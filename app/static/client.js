@@ -6,10 +6,10 @@ function showPicker() {
 
 function showPicked(input) {
   el("upload-label").innerHTML = input.files[0].name;
-  alert(input.files[0]);
+  alert(input.files[0].name);
   var reader = new FileReader();
   reader.onload = function() {
-    el("image-picked").src = reader.result;
+    el("image-picked").src = reader.readAsDataURL(input.files[0]);
     el("image-picked").className = "no-display";
   };
   reader.readAsDataURL(input.files[0]);
