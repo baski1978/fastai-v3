@@ -6,6 +6,7 @@ function showPicker() {
 
 function showPicked(input) {
   el("upload-label").innerHTML = input.files[0].name;
+  alert(input.files[0].name);
   var reader = new FileReader();
   reader.onload = function(e) {
     el("image-picked").src = e.target.result;
@@ -21,7 +22,6 @@ function analyze() {
   el("analyze-button").innerHTML = "Analyzing...";
   var xhr = new XMLHttpRequest();
   var loc = window.location;
-  alert(`${loc.protocol}//${loc.hostname}:${loc.port}/analyze`);
   xhr.open("POST", `${loc.protocol}//${loc.hostname}:${loc.port}/analyze`,true);
   xhr.timeout = 2000;
   xhr.onerror = function() {
