@@ -31,7 +31,7 @@ async def download_file(url, dest):
                 f.write(data)
 
 async def setup_learner():
-  logging.info('I told you so-4')
+    
   await download_file(export_file_url, path / export_file_name)
     try:
         learn = load_learner(path, export_file_name)
