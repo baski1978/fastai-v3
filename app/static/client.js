@@ -29,16 +29,16 @@ function analyze() {
   xhr.onerror = function() {
     alert(xhr.responseText);
   };
-  xhr.onload = function() {
+  xhr.onload = function(e) {
     if (this.readyState === 4) {
-      var response = JSON.parse(xhr.responseText);
+      var response = JSON.parse(e.target.responseText);
       el("result-label").innerHTML = `Result = ${response["result"]}`;
     }
     el("analyze-button").innerHTML = "Analyze";
   };
 
-  var fileData = new FormData();
-  fileData.append("file", uploadFiles[0]);
-    xhr.send(fileData);
+  var fileData2 = new FormData();
+  fileData2.append("file", uploadFiles[0]);
+    xhr.send(fileData2);
 }
 
