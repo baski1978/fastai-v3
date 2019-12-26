@@ -62,7 +62,8 @@ async def analyze(request):
     img = open_image(BytesIO(img_bytes))
     prediction = learn.predict(img)[0]
     return JSONResponse({'result': "hello2"})
-
+    logging.info('I told you so')
+    logging.info(prediction[0])
 
 if __name__ == '__main__':
     if 'serve' in sys.argv:
