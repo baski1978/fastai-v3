@@ -19,16 +19,16 @@ function analyze() {
   if (uploadFiles.length !== 1) alert("Please select a file to analyze!");
 
   el("analyze-button").innerHTML = "Analyzing...";
-  var xhr = new XMLHttpRequest();
+  var xhr22 = new XMLHttpRequest();
   var loc = window.location;
-   xhr.open("POST", `${loc.protocol}//${loc.hostname}:${loc.port}/analyze`,true);
+  xhr22.open("POST", `${loc.protocol}//${loc.hostname}:${loc.port}/analyze`,true);
   // xhr.open("POST", `${loc.protocol}//${loc.hostname}:${loc.port}/predict/`,true);
   //  xhr.open("POST", `${loc.protocol}//${loc.hostname}:${loc.port}/analyze`,true);predict
 
-  xhr.onerror = function() {
-    alert(xhr.responseText);
+  xhr22.onerror = function() {
+    alert(xhr22.responseText);
   };
-  xhr.onload = function(ee) {
+  xhr22.onload = function(ee) {
     if (this.readyState === 4) {
       var response = JSON.parse(ee.target.responseText);
       el("result-label").innerHTML = `Result = ${response["result"]}`;
@@ -38,6 +38,6 @@ function analyze() {
 
   var fileData2 = new FormData();
   fileData2.append("file", uploadFiles[0]);
-    xhr.send(fileData2);
+    xhr22.send(fileData2);
 }
 
