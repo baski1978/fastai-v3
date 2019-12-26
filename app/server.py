@@ -20,7 +20,7 @@ app = Starlette()
 app.add_middleware(CORSMiddleware, allow_origins=['*'], allow_headers=['X-Requested-With', 'Content-Type'])
 app.mount('/static', StaticFiles(directory='app/static'))
 
-  logging.info('I told you so-1')
+logging.info('I told you so-1')
     
 async def download_file(url, dest):
     if dest.exists(): return
@@ -29,10 +29,10 @@ async def download_file(url, dest):
             data = await response.read()
             with open(dest, 'wb') as f:
                 f.write(data)
-logging.info('I told you so-4')
 
 async def setup_learner():
-    await download_file(export_file_url, path / export_file_name)
+  logging.info('I told you so-4')
+  await download_file(export_file_url, path / export_file_name)
     try:
         learn = load_learner(path, export_file_name)
         return learn
@@ -43,9 +43,9 @@ async def setup_learner():
             raise RuntimeError(message)
         else:
             raise
-logging.info('I told you so-5')
 
 loop = asyncio.get_event_loop()
+logging.info('I told you so-5')
 tasks = [asyncio.ensure_future(setup_learner())]
 learn = loop.run_until_complete(asyncio.gather(*tasks))[0]
 loop.close()
@@ -56,7 +56,7 @@ logging.info('I told you so-6')
 async def homepage(request):
     html_file = path / 'view' / 'index.html'
     return HTMLResponse(html_file.open().read())
-logging.info('I told you so-7')
+    logging.info('I told you so-7')
 
 @app.route('/analyze', methods=['POST'])
 async def analyze(request):
