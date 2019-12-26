@@ -1,43 +1,39 @@
-var el = x => document.getElementById(x);
-
-function showPicker() {
-  el("file-input").click();
-}
-
-function showPicked(input) {
-  el("upload-label").innerHTML = input.files[0].name;
-  var reader = new FileReader();
-  reader.onload = function(e) {
-    el("image-picked").src = e.target.result;
-    el("image-picked").className = "";
-  };
-  reader.readAsDataURL(input.files[0]);
-}
-
-function analyze() {
-  var uploadFiles = el("file-input").files;
-  if (uploadFiles.length !== 1) alert("Please select a file to analyze!");
-
-  el("analyze-button").innerHTML = "Analyzing...";
-  var xhr22 = new XMLHttpRequest();
-  var loc = window.location;
-  xhr22.open("POST", `${loc.protocol}//${loc.hostname}:${loc.port}/analyze`,true);
-  // xhr.open("POST", `${loc.protocol}//${loc.hostname}:${loc.port}/predict/`,true);
-  //  xhr.open("POST", `${loc.protocol}//${loc.hostname}:${loc.port}/analyze`,true);predict
-
-  xhr22.onerror = function() {
-    alert(xhr22.responseText);
-  };
-  xhr22.onload = function(ee) {
-    if (this.readyState === 4) {
-      var response = JSON.parse(ee.target.responseText);
-      el("result-label").innerHTML = `Result = ${response["result"]}`;
-    }
-    el("analyze-button").innerHTML = "Analyze";
-  };
-
-  var fileData2 = new FormData();
-  fileData2.append("file", uploadFiles[0]);
-    xhr22.send(fileData2);
-}
-
+<html lang='en'>
+<head>
+  <meta charset='utf-8'>
+  <link rel='stylesheet' href='../static/style.css'>
+  <script src='../static/client.js'></script>
+</head>
+<body>
+<div>
+  <div class='center'>
+    <div class='title'>Classify Leaf Images</div>
+    <p>
+      Use images of <strong>betel</strong> Leaf, <strong>insulin</strong> Leaf, <strong>tobacco</strong> Leaf or  <strong>tulsi</strong>   </p>
+    <div class='content'>
+      <div class='no-display'>
+        <input id='file-input'
+               class='no-display'
+               type='file'
+               name='file'
+               accept='image/*'
+               onchange='showPicked(this)'>
+      </div>
+      <button class='choose-file-button' type='button' onclick='showPicker()'>Select Image</button>
+      <div class='upload-label'>
+        <label id='upload-label'>No file chosen</label>
+      </div>
+      <div>
+        <img id='image-picked' class='no-display' alt='Chosen Image' height='200'>
+      </div>
+      <div class='analyze'>
+        <button id='analyze-button' class='analyze-button' type='button' onclick='analyze()'>Analyze</button>
+      </div>
+      <div class='result-label'>
+        <label id='result-label'></label>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>
