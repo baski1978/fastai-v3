@@ -21,8 +21,7 @@ function analyze() {
   el("analyze-button").innerHTML = "Analyzing...";
   var xhr22 = new XMLHttpRequest();
   var loc = window.location;
-  xhr22.open("POST", `${loc.protocol}//${loc.hostname}:${loc.port}/analyzex`,
-             true);
+  xhr22.open("POST", `${loc.protocol}//${loc.hostname}:${loc.port}/analyze`,true);
   // xhr.open("POST", `${loc.protocol}//${loc.hostname}:${loc.port}/predict/`,true);
   //  xhr.open("POST", `${loc.protocol}//${loc.hostname}:${loc.port}/analyze`,true);predict
 
