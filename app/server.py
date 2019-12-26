@@ -55,13 +55,13 @@ async def homepage(request):
     return HTMLResponse(html_file.open().read())
 
 
-@app.route('/analyzex', methods=['POST'])
-async def analyzex(request):
+@app.route('/analyze', methods=['POST'])
+async def analyze(request):
     img_data = await request.form()
     img_bytes = await (img_data['file'].read())
     img = open_image(BytesIO(img_bytes))
     prediction = learn.predict(img)[0]
-    return JSONResponse({'result': str('hello')})
+    return JSONResponse({'result': "hello"})
 
 
 if __name__ == '__main__':
