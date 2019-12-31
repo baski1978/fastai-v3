@@ -1,5 +1,6 @@
 import aiohttp
 import asyncio
+import logging
 import uvicorn
 from fastai import *
 from fastai.vision import *
@@ -58,6 +59,7 @@ async def homepage(request):
 @app.route('/analyze', methods=['POST'])
 async def analyze(request):
     img_data = await request.form()
+    logging.debug('Do it yourself')
     img_bytes = await (img_data['file'].read())
     img = open_image(BytesIO(img_bytes))
     prediction = learn.predict(img)[0]
